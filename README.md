@@ -21,7 +21,7 @@ Compatible with the "new", "top", and "controversial" post sort options.
 1) **httpx** – for asynchronous web requests.<br>
 2) **parsel** – for XPath-based HTML parsing.<br>
 3) **pandas** – for storing the Data.<br>
-#### Code
+## How to Run Scraping.ipynb
 I have written all the code in ***Scraping.ipynb*** File. <br><br>
 **How to use**<br>
 Just provide the username and run all the  cells in the jupyter notebook.<br>
@@ -37,6 +37,56 @@ comments = await scrape_user_comments("reddit_username", sort="top", max_pages=3
 **Saving the Data as CSV_FILES**<br><br>
 *{username}_posts.csv* <br>
 *{username}_comments.csv*<br>
+
+---
+
+### Generating User Persona -<br><br>
+1) Load the CSV files using Pandas. <br><br>
+2) This project uses **LangChain** to build a prompt pipeline that sends Reddit user data (posts + comments) to a **local LLM (LLaMA 3 via Ollama)**.<br><br>
+3) LangChain handles prompt formatting and response chaining to generate a rich user persona based on online behavior.<br><br>
+
+# How to run User_Persona.ipynb
+##  Setup Instructions for Local LLaMA 3 (Ollama)
+
+This notebook uses the `llama3` model via **Ollama**, a tool that lets you run large language models locally without needing an OpenAI API key.
+
+###  Steps to Use This Notebook
+
+1. **Install Ollama** (if not already):
+   - Download from: https://ollama.com
+   - Follow the installation steps for your operating system.
+
+2. **Pull the LLaMA 3 model locally**:
+   Open your terminal or command prompt and run:<br>
+   
+   ollama pull llama3
+
+   
+This will download the model (~4–8GB depending on version).
+
+3. **Start the Ollama server**:
+In the terminal, run:
+
+ollama run llama3
+
+This will start the model server on `http://localhost:11434`. Keep this terminal running in the background.
+
+4.  **Now you can run the code cell below** to use LLaMA 3 locally with LangChain.
+
+>  Note: Once the model is pulled, no internet connection is required — all generation happens locally.<br><br>
+
+## Dependncies required 
+```bash
+!pip install -q langchain langchain-community pandas
+```
+# Sample_Output(Saved as .txt file) 
+1) ***Hungry-Move-6603_persona_output.txt***
+2) ***kojied_persona_output.txt***
+
+
+
+
+
 
 
 
